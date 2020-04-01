@@ -57,7 +57,7 @@ export const resolvers = {
       cache.writeData({
         // send data to cache
         data: {
-          notes: [newNote, notes] // newNote + old notes
+          notes: [newNote, ...notes] // newNote + old notes
         }
       });
       return newNote;

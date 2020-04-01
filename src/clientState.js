@@ -1,5 +1,6 @@
 import { NOTE_FRAGMENT } from "./fragments";
 import { GET_NOTES } from "./queries";
+import { saveNotes } from "./offline";
 
 export const defaults = {
   notes: [
@@ -60,6 +61,7 @@ export const resolvers = {
           notes: [newNote, ...notes] // newNote + old notes
         }
       });
+      saveNotes(cache);
       return newNote;
     },
     editNote: (_, { id, title, content }, { cache }) => {
